@@ -6,3 +6,7 @@
 
 # Automatização do run
 	- yarn add -D webpack-dev-server
+
+# Biblioteca para fazer uma tipagem no código 
+	- Possibilita determinar qual o tipo das propriedades (Components) e se elas são ou não obrigatórias
+		- yarn add prop-types
