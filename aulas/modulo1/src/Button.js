@@ -6,7 +6,7 @@ const Button = props => {
 };
 
 Button.defaultProps = {
-  children: "Enviar"
+  children: "Somar"
 };
 
 Button.propTypes = {
