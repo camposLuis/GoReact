@@ -1,28 +1,30 @@
-import React, { Component, Fragment } from "react";
-import { render } from "react-dom";
-import Button from "./Button";
-import "./style.scss";
+import React, { Component, Fragment } from 'react';
+import { render } from 'react-dom';
+import Button from './Button';
+import './style.scss';
 
 class App extends Component {
   state = {
-    counter: 0
+    counter: 0,
   };
 
   componentDidMount() {}
 
   henderOnclick = () => {
-    this.setState({ counter: this.state.counter + 1 });
+    const { counter } = this.state;
+    this.setState({ counter: counter + 1 });
   };
 
   render() {
+    const { counter } = this.state;
     return (
       <Fragment>
         <h1>Hello Rocketseat</h1>
-        <h2>{this.state.counter}</h2>
+        <h2>{counter}</h2>
         <Button onClick={this.henderOnclick}>Somar</Button>
       </Fragment>
     );
   }
 }
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById('app'));

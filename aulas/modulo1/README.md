@@ -42,3 +42,9 @@
 # Instalação de um pré processador de estilos
 
     - yarn add -D sass-loader node-sass
+
+# Utilizando padrões de guias de estilo com ESlint
+
+- yarn add -D eslint
+- npx eslint --init
+- yarn add -D babel-eslint
