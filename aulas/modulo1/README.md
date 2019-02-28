@@ -34,3 +34,11 @@
 
 - componentDidUpdate(prevProps, prevState) {}
   . Componente executado depois de sofrer a atualização
+
+# Instalação de bibliotecas que permitem ler um arquivo css a partir de um arquivo js
+
+    - yarn add -D style-loader css-loader
+
+# Instalação de um pré processador de estilos
+
+    - yarn add -D sass-loader node-sass
