@@ -7,6 +7,8 @@ class App extends Component {
     counter: 0
   };
 
+  componentDidMount() {}
+
   henderOnclick = () => {
     this.setState({ counter: this.state.counter + 1 });
   };
