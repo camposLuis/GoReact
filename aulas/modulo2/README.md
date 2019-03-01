@@ -13,3 +13,11 @@
   - yarn add eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react -D
 
 - Configurar o arquivo .eslintrc
+
+# Instalando o styled components
+
+- O Styled componet é uma maneira de criar componentes apenas estilizando as tags padrõs do HTML
+
+  - yarn add styled-components
+
+  - instalar no vscode: vscode-styled-components (permite colocar a sintax highlight)
