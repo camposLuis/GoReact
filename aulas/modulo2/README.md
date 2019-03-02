@@ -21,3 +21,11 @@
   - yarn add styled-components
 
   - instalar no vscode: vscode-styled-components (permite colocar a sintax highlight)
+
+# Instalando biblioteca para realizar chamadas à API
+
+- yarn add axios
+
+# Instalando validador de Prop Types
+
+- yarn add prop-types
