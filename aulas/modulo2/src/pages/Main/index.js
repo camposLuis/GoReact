@@ -13,6 +13,11 @@ export default class Main extends Component {
     repositories: [],
   };
 
+  async componentDidMount() {
+    this.setState({ loading: true });
+    this.setState({ loading: false, repositories: await this.getLocalRepository() });
+  }
+
   handleAddRepository = async (e) => {
     e.preventDefault();
 
@@ -30,11 +35,52 @@ export default class Main extends Component {
         repositories: [...repositories, repository],
         repositoryError: false,
       });
+
+      const localRepository = await this.getLocalRepository();
+
+      await localStorage.setItem(
+        '@RepLocal:repositories',
+        JSON.stringify([...localRepository, repository]),
+      );
     } catch (err) {
       this.setState({ repositoryError: true });
     } finally {
       this.setState({ loading: false });
     }
+  };
+
+  getLocalRepository = async () => JSON.parse(await localStorage.getItem('@RepLocal:repositories')) || [];
+
+  handleUpdateRepository = async (id) => {
+    const { repositories } = this.state;
+
+    const repository = repositories.find(rp => rp.id === id);
+
+    try {
+      const { data } = await api.get(`/repos/${repository.full_name}`);
+
+      data.lastCommit = moment(data.pushed_at).fromNow();
+
+      this.setState({
+        repositoryError: false,
+        repositoryInput: '',
+        repositories: repositories.map(rp => (rp.id === data.id ? data : rp)),
+      });
+
+      await localStorage.setItem('@RepLocal:repositories', JSON.stringify(repositories));
+    } catch (err) {
+      this.setState({ repositoryError: true });
+    }
+  };
+
+  handleRemoveRepository = async (id) => {
+    const { repositories } = this.state;
+
+    const updateRepositories = repositories.filter(repository => repository.id !== id);
+
+    this.setState({ repositories: updateRepositories });
+
+    await localStorage.setItem('@RepLocal:repositories', JSON.stringify(updateRepositories));
   };
 
   render() {
@@ -56,7 +102,11 @@ export default class Main extends Component {
           <button type="submit">{loading ? <i className="fa fa-spinner fa-pulse" /> : 'OK'}</button>
         </Form>
 
-        <CompareList repositories={repositories} />
+        <CompareList
+          repositories={repositories}
+          removeRepository={this.handleRemoveRepository}
+          updateRepository={this.handleUpdateRepository}
+        />
       </Container>
     );
   }
