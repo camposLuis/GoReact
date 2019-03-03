@@ -33,3 +33,7 @@
 # Instalando biblioteca para lidar com datas
 
 - yarn add moment
+
+# Instalando biblioteca para loading
+
+- yarn add font-awesome
