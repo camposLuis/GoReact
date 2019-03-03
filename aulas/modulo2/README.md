@@ -29,3 +29,7 @@
 # Instalando validador de Prop Types
 
 - yarn add prop-types
+
+# Instalando biblioteca para lidar com datas
+
+- yarn add moment
