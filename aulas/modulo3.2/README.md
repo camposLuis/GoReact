@@ -17,3 +17,7 @@
 - Realiza a chamada da API para assim passar os dados obtidos para os reducers
 
 - yarn add redux-saga axios
+
+# Instalando plugin para reactotron do redux saga
+
+- yarn add reactotron-redux-saga
