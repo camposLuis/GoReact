@@ -11,3 +11,9 @@
 # Instalando biblioteca para configuração do roteamento da aplicação
 
 - yarn add react-router-dom
+
+# Instalando redux-saga
+
+- Realiza a chamada da API para assim passar os dados obtidos para os reducers
+
+- yarn add redux-saga axios
