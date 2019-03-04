@@ -17,6 +17,7 @@ class Main extends Component {
           url: PropTypes.string,
         }),
       ),
+      error: PropTypes.oneOfType([null, PropTypes.string]),
     }).isRequired,
   };
 
@@ -36,6 +37,7 @@ class Main extends Component {
   render() {
     const { repositoryInput } = this.state;
     const { props } = this;
+
     return (
       <Fragment>
         <form onSubmit={this.handleAddRepository}>
@@ -47,6 +49,9 @@ class Main extends Component {
           <button type="submit">Adicionar</button>
 
           {props.favorites.loading && <span>Carregando...</span>}
+          {!!props.favorites.error && (
+            <span style={{ color: '#F00' }}>{props.favorites.error}</span>
+          )}
         </form>
 
         <ul>
