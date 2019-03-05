@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import MapGL, { Marker } from 'react-map-gl';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as ModalActions } from '../../store/ducks/modal';
 
 import './styles.css';
 
-export default class Map extends Component {
+class Map extends Component {
   state = {
     viewport: {
       width: window.innerWidth,
@@ -35,13 +38,15 @@ export default class Map extends Component {
   };
 
   handleMapClick = async (e) => {
-    const [latitude, longitude] = e.lngLat;
+    const [longitude, latitude] = e.lngLat;
+    const { showModal } = this.props;
 
-    alert(`Latitude: ${latitude} \nLongitude: ${longitude}`);
+    await showModal({ latitude, longitude });
   };
 
   render() {
     const { viewport: viewportState } = this.state;
+    const { users } = this.props;
 
     return (
       <MapGL
@@ -51,15 +56,29 @@ export default class Map extends Component {
         mapboxApiAccessToken="pk.eyJ1IjoibHVpc2NhbXBvc2hlbnJpcXVlIiwiYSI6ImNqc3YyamFjajAybWYzeXBycHRsMTZvYmkifQ.FNV5KwGF-Y0rB-LNbBQoIw"
         onViewportChange={viewport => this.setState({ viewport })}
       >
-        <Marker
-          latitude={-18.574775}
-          longitude={-46.516793}
-          onClick={this.handleMapClick}
-          captureClick
-        >
-          <img className="avatar" src="https://avatars3.githubusercontent.com/u/5728954?v=4" />
-        </Marker>
+        {users.data.map(user => (
+          <Marker
+            latitude={user.cordinates.latitude}
+            longitude={user.cordinates.longitude}
+            key={user.id}
+            onClick={this.handleMapClick}
+            captureClick
+          >
+            <img className="avatar" alt={`${user.name} Avatar`} src={user.avatar} />
+          </Marker>
+        ))}
       </MapGL>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(ModalActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Map);
