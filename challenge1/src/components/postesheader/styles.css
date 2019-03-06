@@ -1,0 +1,27 @@
+.post-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.post-header-container img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.post-header-container div {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-header-container div strong {
+  font-size: 16px;
+  color: #666666;
+}
+
+.post-header-container div span {
+  font-size: 14px;
+  color: #999999;
+  margin-top: 5px;
+}

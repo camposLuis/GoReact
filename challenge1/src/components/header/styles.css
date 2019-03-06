@@ -1,0 +1,14 @@
+.header {
+  background: #4267b2;
+  border-bottom: 1px solid #29487d;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h3 {
+  font-size: 20px;
+  color: #ffffff;
+}
