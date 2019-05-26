@@ -2,12 +2,12 @@ import React from 'react';
 
 import GlobalStyle from './styles/global';
 
+import Sidebar from './components/Sidebar';
+
 const App = () => (
   <>
     <GlobalStyle />
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <Sidebar />
   </>
 );
 
