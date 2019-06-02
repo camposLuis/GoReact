@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.16.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "redux-mock-store": "^1.5.3"
