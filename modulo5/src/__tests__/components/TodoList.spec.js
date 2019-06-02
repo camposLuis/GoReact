@@ -21,8 +21,6 @@ it("should render the list and button", () => {
     </Provider>
   );
 
-  console.log(wrapper.html());
-
   expect(wrapper.find("li").length).toBe(2);
 });
 
